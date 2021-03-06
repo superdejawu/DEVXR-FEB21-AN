@@ -7,6 +7,7 @@ public class BridgeTriggerZone : MonoBehaviour
 {
     public Animator bridgeAnimator;
     private object detectBridgeRaise;
+    public float bridgeLowerTime = 5f;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -34,7 +35,7 @@ public class BridgeTriggerZone : MonoBehaviour
 
     private IEnumerator DetectBridgeRaise()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(bridgeLowerTime);
         bridgeAnimator.SetBool("isRaising", false);
         Debug.Log("isRaising: false");
     }
