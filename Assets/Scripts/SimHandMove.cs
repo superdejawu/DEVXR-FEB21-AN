@@ -90,7 +90,7 @@ public class SimHandMove : MonoBehaviour
         {
             moveSpeed /= sprintMultiplier;
         }
-        Debug.Log($"{transform.position}");
+        //Debug.Log($"{transform.position}");
     }
 
     
