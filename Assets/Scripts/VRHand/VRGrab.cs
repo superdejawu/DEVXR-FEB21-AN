@@ -32,16 +32,18 @@ public class VRGrab : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (controller.gripValue >0.5f && gripHeld == true)
+        if (controller.gripValue >0.5f && gripHeld == false)
         {
+            gripHeld = true;
             if (collidingObject && collidingObject.GetComponent<Rigidbody>())
             {
                 heldObject = collidingObject;
                 Grab();
             }
         }
-        if (controller.gripValue < 0.5f && gripHeld ==false)
+        if (controller.gripValue < 0.5f && gripHeld ==true)
         {
+            gripHeld = false;
             if (heldObject)
             {
                 Release();

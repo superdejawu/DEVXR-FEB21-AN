@@ -73,6 +73,7 @@ public class SimHandMove : MonoBehaviour
         // sprint?
         DoSprint();
 
+      
         //Lerp Example
         //transform.position = Vector3.Lerp(transform.position, position, Time.deltaTime);
     }

@@ -17,9 +17,9 @@ public class VRHandAnimator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(controller)
+        if (controller)
         {
-            handAnimator.Play("Fist Closing", 0, controller.gripValue);
+                handAnimator.Play("Fist Closing", 0, controller.gripValue);
         }
     }
 }
