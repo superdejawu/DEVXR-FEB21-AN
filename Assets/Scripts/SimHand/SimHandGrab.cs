@@ -50,7 +50,13 @@ public class SimHandGrab : MonoBehaviour
                 Release();
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            heldObject.BroadcastMessage("Interact");
+        }
     }
+
     public void Grab()
     {
         Debug.Log("Grabbing!");
