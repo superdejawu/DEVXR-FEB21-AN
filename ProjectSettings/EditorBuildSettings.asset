@@ -8,7 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/VRMainScene.unity
     guid: 48d49dacda2744d2ea2b4e96ccd20131
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MainIntro.unity
     guid: 6257c4cb803014202a83b7d3b32256e9
   m_configObjects:
