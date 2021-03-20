@@ -2,22 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlashlightSimHand : MonoBehaviour
+public class FlashlightSimHand : GrabbableObjectSimHand
 {
     public Light flashLight;
 
-    private GrabbableObjectSimHand grabbableObjectSimHand;
 
     // Start is called before the first frame update
     void Start()
     {
-        grabbableObjectSimHand = GetComponent<GrabbableObjectSimHand>();   
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(grabbableObjectSimHand.isBeingHeld)
+        if(isBeingHeld)
         {
 
             if (Input.GetKeyDown(KeyCode.Mouse0))
