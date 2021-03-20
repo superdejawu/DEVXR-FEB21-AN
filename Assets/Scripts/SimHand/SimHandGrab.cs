@@ -51,10 +51,6 @@ public class SimHandGrab : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            heldObject.BroadcastMessage("Interact");
-        }
     }
 
     public void Grab()
@@ -62,9 +58,25 @@ public class SimHandGrab : MonoBehaviour
         Debug.Log("Grabbing!");
         heldObject.transform.SetParent(this.transform);
         heldObject.GetComponent<Rigidbody>().isKinematic = true;
+
+        var grabbable = heldObject.GetComponent<GrabbableObjectSimHand>();
+
+        if (grabbable)
+        {
+            grabbable.simHandController = this;
+            grabbable.isBeingHeld = true;
+        }
     }
     public void Release()
     {
+        var grabbable = heldObject.GetComponent<GrabbableObjectSimHand>();
+        if (grabbable)
+        {
+            grabbable.isBeingHeld = false;
+            grabbable.simHandController = null;
+        }
+
+
         // throw
         Rigidbody rb = heldObject.GetComponent<Rigidbody>();
         rb.velocity = controller.velocity * throwForce;
@@ -72,5 +84,7 @@ public class SimHandGrab : MonoBehaviour
         heldObject.transform.SetParent(null);
         heldObject.GetComponent<Rigidbody>().isKinematic = false;
         heldObject = null;
+
+      
     }
 }
