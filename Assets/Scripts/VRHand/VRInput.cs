@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events; //Required for events
 public class VRInput : MonoBehaviour
 {
-    public Hands hand = Hands.Left;
+    public Hands hand = Hands.Left; //Left is just the starting value, when you plug in a right hand it'll override this
     public float gripValue;
+    public float triggerValue;
+
     /// <summary>
     /// The velocity of the controller
     /// </summary>
@@ -13,16 +16,69 @@ public class VRInput : MonoBehaviour
     /// The angular velocity of the controller
     /// </summary>
     public Vector3 angularVelocity;
+
+
     private string gripAxis;
+    private string triggerAxis;
+    private string gripButton;
+    private string triggerButton;
+    
+    
     private Vector3 previousPosition;
     private Vector3 previousAngularRotation;
+
+    public UnityEvent OnGripDown;
+    public UnityEvent OnGripUpdated;
+    public UnityEvent OnGripUp;
+
+    public UnityEvent OnTriggerDown;
+    public UnityEvent OnTriggerUpdated;
+    public UnityEvent OnTriggerUp;
+
     void Start()
     {
         gripAxis = $"{hand}Grip";
+        triggerAxis = $"{hand}Trigger";
+        gripButton = $"{hand}GripButton";
+        triggerButton = $"{hand}TriggerButton";
+
     }
     void Update()
     {
         gripValue = Input.GetAxis(gripAxis);
+
+        if (Input.GetButtonDown(gripButton))
+        {
+            OnGripDown?.Invoke();
+        }
+
+        if (Input.GetButton(gripButton))
+        {
+            OnGripUpdated?.Invoke();
+        }
+
+        if (Input.GetButtonUp(gripButton))
+        {
+            OnGripUp?.Invoke();
+        }
+
+        triggerValue = Input.GetAxis(triggerAxis);
+
+        if (Input.GetButtonDown(triggerButton))
+        {
+            OnTriggerDown?.Invoke();
+        }
+
+        if (Input.GetButton(triggerButton))
+        {
+            OnTriggerUpdated?.Invoke();
+        }
+
+        if (Input.GetButtonUp(triggerButton))
+        {
+            OnTriggerUp?.Invoke();
+        }
+
         // controller velocity
         velocity = (transform.position - previousPosition) / Time.deltaTime;
         previousPosition = transform.position;

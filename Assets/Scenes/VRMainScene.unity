@@ -729,7 +729,7 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 420745344}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
@@ -1036,6 +1036,7 @@ GameObject:
   - component: {fileID: 655801823}
   - component: {fileID: 655801822}
   - component: {fileID: 655801825}
+  - component: {fileID: 655801826}
   m_Layer: 0
   m_Name: Flashlight
   m_TagString: Untagged
@@ -1102,7 +1103,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 194f632b74ef7c648bb9ceede1b06172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  simHandController: {fileID: 0}
+  isBeingHeld: 0
   flashLight: {fileID: 370599596}
+--- !u!114 &655801826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 655801821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 870ccb043f4823144989c0f0ac9887f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  VRController: {fileID: 0}
+  isBeingHeld: 0
+  flashLight: {fileID: 0}
 --- !u!1 &698791384
 GameObject:
   m_ObjectHideFlags: 0
@@ -1213,7 +1231,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &839977808
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1514,8 +1532,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hand: 0
   gripValue: 0
+  triggerValue: 0
   velocity: {x: 0, y: 0, z: 0}
   angularVelocity: {x: 0, y: 0, z: 0}
+  OnGripDown:
+    m_PersistentCalls:
+      m_Calls: []
+  OnGripUpdated:
+    m_PersistentCalls:
+      m_Calls: []
+  OnGripUp:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTriggerDown:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTriggerUpdated:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTriggerUp:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!65 &1058186593
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1580,7 +1617,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1117722158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2585,8 +2622,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hand: 1
   gripValue: 0
+  triggerValue: 0
   velocity: {x: 0, y: 0, z: 0}
   angularVelocity: {x: 0, y: 0, z: 0}
+  OnGripDown:
+    m_PersistentCalls:
+      m_Calls: []
+  OnGripUpdated:
+    m_PersistentCalls:
+      m_Calls: []
+  OnGripUp:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTriggerDown:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTriggerUpdated:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTriggerUp:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1616506816
 MonoBehaviour:
   m_ObjectHideFlags: 0

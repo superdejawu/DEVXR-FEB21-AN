@@ -16,7 +16,9 @@ public class VRGrab : MonoBehaviour
     /// </summary>
     public float throwForce = 1f;
     private bool gripHeld;
+
     private VRInput controller;
+
     private void OnTriggerEnter(Collider other)
     {
         // save/caching what we're touching
@@ -59,9 +61,28 @@ public class VRGrab : MonoBehaviour
         Debug.Log("Grabbing!");
         heldObject.transform.SetParent(this.transform);
         heldObject.GetComponent<Rigidbody>().isKinematic = true;
+
+        var grabbable = heldObject.GetComponent<GrabbableObjectVR>();
+
+        if (grabbable)
+        {
+            grabbable.VRController = controller;
+            grabbable.isBeingHeld = true;
+        }
+
+        //start listening for trigger
+        controller.OnTriggerDown.AddListener(grabbable.OnInteraction);
     }
     public void Release()
     {
+        var grabbable = heldObject.GetComponent<GrabbableObjectVR>();
+
+        if (grabbable)
+        {
+            grabbable.isBeingHeld = false;
+            grabbable.VRController = null;
+        }
+
         // throw
         Rigidbody rb = heldObject.GetComponent<Rigidbody>();
         rb.velocity = controller.velocity * throwForce;
@@ -69,5 +90,9 @@ public class VRGrab : MonoBehaviour
         heldObject.transform.SetParent(null);
         heldObject.GetComponent<Rigidbody>().isKinematic = false;
         heldObject = null;
+
+
+        //stop listening for trigger
+        controller.OnTriggerDown.RemoveListener(grabbable.OnInteraction);
     }
 }
