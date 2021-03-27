@@ -22,7 +22,13 @@ public class VRInput : MonoBehaviour
     private string triggerAxis;
     private string gripButton;
     private string triggerButton;
-    
+    private string thumbstickX;
+    private string thumbstickY;
+
+    /// <summary>
+    /// The direction of the joystick thumbstick
+    /// </summary>
+    public Vector2 thumbstick;
     
     private Vector3 previousPosition;
     private Vector3 previousAngularRotation;
@@ -41,11 +47,14 @@ public class VRInput : MonoBehaviour
         triggerAxis = $"{hand}Trigger";
         gripButton = $"{hand}GripButton";
         triggerButton = $"{hand}TriggerButton";
+        thumbstickX = $"{hand}ThumbstickX";
+        thumbstickY = $"{hand}ThumbstickY";
 
     }
     void Update()
     {
         gripValue = Input.GetAxis(gripAxis);
+        thumbstick = new Vector2(Input.GetAxis(thumbstickX), Input.GetAxis(thumbstickY));
 
         if (Input.GetButtonDown(gripButton))
         {

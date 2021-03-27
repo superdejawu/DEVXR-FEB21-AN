@@ -123,4 +123,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f3b9dd2d4bfc004ca75b6da228754e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  paint: {fileID: 2100000, guid: 7cd1f006f951d5c48bd2aa9c0ed8098b, type: 2}
+  paints:
+  - {fileID: 2100000, guid: 654ca266c6d9e4f2a96158e0d163970a, type: 2}
+  - {fileID: 2100000, guid: 0d4f70909861b0e488e978a5aeaeb77d, type: 2}
+  - {fileID: 2100000, guid: 7cd1f006f951d5c48bd2aa9c0ed8098b, type: 2}
+  - {fileID: 2100000, guid: dff59facae50b419789f715283b537d8, type: 2}
