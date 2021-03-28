@@ -23,7 +23,7 @@ public class VRSnapTurn : MonoBehaviour
         }
         else if (controller.thumbstick.x < -0.9f)
         {
-            xrRig.transform.Rotate(0f, angle, 0f, Space.World);
+            xrRig.transform.Rotate(0f, -angle, 0f, Space.World);
         }
     }
 }

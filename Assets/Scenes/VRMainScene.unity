@@ -2182,7 +2182,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1058186588}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6cd2297ce7a92c94687d4ae727693cc3, type: 3}
   m_Name: 
@@ -3614,7 +3614,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   xrRig: {fileID: 1761882147}
-  director: {fileID: 420745345}
+  director: {fileID: 1616506812}
 --- !u!1 &1693762046
 GameObject:
   m_ObjectHideFlags: 0
