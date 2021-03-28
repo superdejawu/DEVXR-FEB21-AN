@@ -11,6 +11,7 @@ public class VRTeleportation : MonoBehaviour
     private LineRenderer teleportLaser;
     private Vector3 hitPosition;
     public Vector3 height = new Vector3(0f, 0.1f, 0f);
+    private Vector3 offsetHit;
 
     public bool shouldTeleport = false;
 
@@ -34,7 +35,6 @@ public class VRTeleportation : MonoBehaviour
                 teleportLaser.SetPosition(0, controller.transform.position);
                 teleportLaser.SetPosition(1, hitPosition);
                 teleportLaser.enabled = true;
-
                 shouldTeleport = true;
 
             }
@@ -43,9 +43,26 @@ public class VRTeleportation : MonoBehaviour
         {
           if(shouldTeleport == true)
             {
-                xrRig.transform.position = hitPosition + height;
+                float offset = Offset();
+                xrRig.transform.position = new Vector3(hitPosition.x, hitPosition.y + offset, hitPosition.z);
+                shouldTeleport = false;
+                teleportLaser.enabled = false;
+
             }
-            teleportLaser.enabled = false;
+        }
+    }
+
+    private float Offset()
+    {
+        RaycastHit offsetHit;
+        if(Physics.Raycast(transform.position,-transform.up, out offsetHit))
+        {
+            Vector3 distance = transform.position - offsetHit.point;
+            return distance.y;
+        }
+        else
+        {
+            return default;
         }
     }
 }
