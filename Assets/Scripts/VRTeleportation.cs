@@ -10,6 +10,7 @@ public class VRTeleportation : MonoBehaviour
     private VRInput controller;
     private LineRenderer teleportLaser;
     private Vector3 hitPosition;
+    public Vector3 height = new Vector3(0f, 0.1f, 0f);
 
     public bool shouldTeleport = false;
 
@@ -42,7 +43,7 @@ public class VRTeleportation : MonoBehaviour
         {
           if(shouldTeleport == true)
             {
-                xrRig.transform.position = hitPosition;
+                xrRig.transform.position = hitPosition + height;
             }
             teleportLaser.enabled = false;
         }
