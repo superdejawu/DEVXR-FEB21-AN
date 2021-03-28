@@ -10,7 +10,6 @@ public class VRTeleportation : MonoBehaviour
     private VRInput controller;
     private LineRenderer teleportLaser;
     private Vector3 hitPosition;
-    public Vector3 height = new Vector3(0f, 0.1f, 0f);
     private Vector3 offsetHit;
 
     public bool shouldTeleport = false;
