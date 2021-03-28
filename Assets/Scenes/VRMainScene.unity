@@ -1929,6 +1929,7 @@ GameObject:
   - component: {fileID: 1058186594}
   - component: {fileID: 1058186595}
   - component: {fileID: 1058186596}
+  - component: {fileID: 1058186598}
   - component: {fileID: 1058186597}
   m_Layer: 8
   m_Name: LeftHand
@@ -2069,7 +2070,7 @@ LineRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1058186588}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -2174,6 +2175,20 @@ MonoBehaviour:
   xrRig: {fileID: 1761882147}
   height: {x: 0, y: 0.1, z: 0}
   shouldTeleport: 0
+--- !u!114 &1058186598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1058186588}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cd2297ce7a92c94687d4ae727693cc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xrRig: {fileID: 1761882147}
+  angle: 20
 --- !u!1 &1117722157
 GameObject:
   m_ObjectHideFlags: 0
@@ -3339,6 +3354,7 @@ GameObject:
   - component: {fileID: 1616506816}
   - component: {fileID: 1616506817}
   - component: {fileID: 1616506818}
+  - component: {fileID: 1616506821}
   - component: {fileID: 1616506820}
   - component: {fileID: 1616506819}
   m_Layer: 8
@@ -3480,7 +3496,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1616506811}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0b900154d6d20bc4b82d3e808f2f8e32, type: 3}
   m_Name: 
@@ -3495,7 +3511,7 @@ LineRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1616506811}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -3585,6 +3601,20 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!114 &1616506821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1616506811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93020bbd30ee07e438374f9622fb9b56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xrRig: {fileID: 1761882147}
+  director: {fileID: 420745345}
 --- !u!1 &1693762046
 GameObject:
   m_ObjectHideFlags: 0
