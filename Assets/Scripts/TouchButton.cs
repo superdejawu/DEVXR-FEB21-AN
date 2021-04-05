@@ -12,6 +12,8 @@ public class TouchButton : MonoBehaviour
     /// 
     [Tooltip("Thing to teleport")]
     public Transform teleportTransform;
+
+
     /// <summary>
     /// The location to teleport to
     /// </summary>
