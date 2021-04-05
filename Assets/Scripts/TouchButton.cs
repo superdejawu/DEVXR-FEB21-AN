@@ -17,6 +17,7 @@ public class TouchButton : MonoBehaviour
     /// </summary>
     [Tooltip("Where to teleport")]
     public Transform teleportPosition;
+
     void Start()
     {
         upPosition = transform.position;

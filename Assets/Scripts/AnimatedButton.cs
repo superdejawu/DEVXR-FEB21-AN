@@ -5,6 +5,7 @@ using UnityEngine;
 public class AnimatedButton : MonoBehaviour
 {
     public Animator buttonAnim;
+
     public delegate void ButtonPressedEvent();
     public ButtonPressedEvent OnButtonPressed;
 
