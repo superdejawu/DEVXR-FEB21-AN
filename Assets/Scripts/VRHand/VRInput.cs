@@ -33,13 +33,13 @@ public class VRInput : MonoBehaviour
     private Vector3 previousPosition;
     private Vector3 previousAngularRotation;
 
-    public UnityEvent OnGripDown;
-    public UnityEvent OnGripUpdated;
-    public UnityEvent OnGripUp;
+    public UnityAction OnGripDown;
+    public UnityAction OnGripUpdated;
+    public UnityAction OnGripUp;
 
-    public UnityEvent OnTriggerDown;
-    public UnityEvent OnTriggerUpdated;
-    public UnityEvent OnTriggerUp;
+    public UnityAction OnTriggerDown;
+    public UnityAction OnTriggerUpdated;
+    public UnityAction OnTriggerUp;
 
     void Start()
     {

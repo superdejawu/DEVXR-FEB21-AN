@@ -34,53 +34,85 @@ public class VRGrab : MonoBehaviour
     void Awake()
     {
         controller = GetComponent<VRInput>();
+
+        controller.OnGripDown += Grab;
+        controller.OnGripUp += Release;
     }
-    void Update()
+
+    private void OnDisable()
     {
-        if (controller.gripValue > 0.5f && gripHeld == false)
-        {
-            gripHeld = true;
-            if (collidingObject && collidingObject.GetComponent<Rigidbody>())
-            {
-                heldObject = collidingObject;
-                // Grab!
-                Grab();
-            }
-        }
-        if (controller.gripValue < 0.5f && gripHeld == true)
-        {
-            gripHeld = false;
-            if (heldObject)
-            {
-                Release();
-            }
-        }
+        controller.OnGripDown -= Grab;
+        controller.OnGripUp -= Release;
+
     }
+
+    #region using update
+    /*  void Update()
+      {
+          if (controller.gripValue > 0.5f && gripHeld == false)
+          {
+              gripHeld = true;
+              if (collidingObject && collidingObject.GetComponent<Rigidbody>())
+              {
+                  heldObject = collidingObject;
+                  // Grab!
+                  Grab();
+              }
+          }
+          if (controller.gripValue < 0.5f && gripHeld == true)
+          {
+              gripHeld = false;
+              if (heldObject)
+              {
+                  Release();
+              }
+          }
+      }*/
+    #endregion
+
     public void Grab()
     {
-        Debug.Log("Grabbing!");
-        heldObject.transform.SetParent(this.transform);
-        heldObject.GetComponent<Rigidbody>().isKinematic = true;
+        if (collidingObject && collidingObject.GetComponent<Rigidbody>())
 
-        var grabbable = heldObject.GetComponent<GrabbableObjectVR>();
-
-        if (grabbable)
         {
-            grabbable.VRController = controller;
-            grabbable.isBeingHeld = true;
-        }
+            heldObject = collidingObject;
+            heldObject.transform.SetParent(this.transform);
+            heldObject.GetComponent<Rigidbody>().isKinematic = true;
 
-        //start listening for trigger
-        controller.OnTriggerDown.AddListener(grabbable.OnInteraction);
+            var grabbable = heldObject.GetComponent<GrabbableObjectVR>();
+
+            if (grabbable)
+            {
+                grabbable.VRController = controller;
+                grabbable.isBeingHeld = true;
+            }
+
+            //start listening for trigger
+            // controller.OnTriggerDown.AddListener(grabbable.OnInteraction);
+            controller.OnTriggerDown += grabbable.OnInteractionStarted;
+            controller.OnTriggerUpdated += grabbable.OnInteractionStopped;
+            controller.OnTriggerUp += grabbable.OnInteractionStopped;
+        }
+        
     }
     public void Release()
     {
-        var grabbable = heldObject.GetComponent<GrabbableObjectVR>();
-
-        if (grabbable)
+        if (heldObject)
         {
-            grabbable.isBeingHeld = false;
-            grabbable.VRController = null;
+            var grabbable = heldObject.GetComponent<GrabbableObjectVR>();
+
+            if (grabbable)
+            {
+                grabbable.isBeingHeld = false;
+                grabbable.VRController = null;
+            }
+
+            //stop listening for trigger
+            //controller.OnTriggerDown.RemoveListener(grabbable.OnInteraction);
+            controller.OnTriggerDown -= grabbable.OnInteractionStarted;
+            controller.OnTriggerUpdated -= grabbable.OnInteractionStopped;
+            controller.OnTriggerUp -= grabbable.OnInteractionStopped;
+
         }
 
         // throw
@@ -91,8 +123,5 @@ public class VRGrab : MonoBehaviour
         heldObject.GetComponent<Rigidbody>().isKinematic = false;
         heldObject = null;
 
-
-        //stop listening for trigger
-        controller.OnTriggerDown.RemoveListener(grabbable.OnInteraction);
     }
 }
